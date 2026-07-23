@@ -1,0 +1,7 @@
+# Domaine canonique : apex sans www, en https
+https://www.jelspray.fr/*   https://jelspray.fr/:splat   301!
+http://www.jelspray.fr/*    https://jelspray.fr/:splat   301!
+
+# Fallback SPA : toutes les URL renvoient index.html en 200
+# (indispensable avec le routage pushState, sinon /produits renvoie 404)
+/*    /index.html   200
