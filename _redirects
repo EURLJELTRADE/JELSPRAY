@@ -1,7 +1,29 @@
-# Domaine canonique : apex sans www, en https
+# ---------------------------------------------------------------
+# 1. Domaine canonique : apex sans www, en https
+# ---------------------------------------------------------------
 https://www.jelspray.fr/*   https://jelspray.fr/:splat   301!
 http://www.jelspray.fr/*    https://jelspray.fr/:splat   301!
 
-# Fallback SPA : toutes les URL renvoient index.html en 200
-# (indispensable avec le routage pushState, sinon /produits renvoie 404)
+# ---------------------------------------------------------------
+# 2. Fichiers statiques manquants -> vrai 404
+#    Sans ces regles, le fallback SPA ci-dessous renvoie index.html
+#    avec un code 200 pour TOUT fichier absent. Un PDF manquant se
+#    telecharge alors sous forme de page HTML, et Google enregistre
+#    des soft-404 sur chaque URL inexistante.
+#    Netlify sert d'abord les fichiers reels : ces regles ne se
+#    declenchent que si le fichier n'existe pas.
+# ---------------------------------------------------------------
+/fds/*        /404.html   404
+/photos/*     /404.html   404
+/*.pdf        /404.html   404
+/*.webp       /404.html   404
+/*.jpg        /404.html   404
+/*.png        /404.html   404
+/*.xml        /404.html   404
+/*.txt        /404.html   404
+
+# ---------------------------------------------------------------
+# 3. Fallback SPA : les routes applicatives renvoient index.html
+#    (indispensable avec le routage pushState)
+# ---------------------------------------------------------------
 /*    /index.html   200
