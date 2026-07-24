@@ -1,5 +1,0 @@
-# JELSPRAY - EURL JELTRADE
-User-agent: *
-Allow: /
-
-Sitemap: https://jelspray.fr/sitemap.xml
