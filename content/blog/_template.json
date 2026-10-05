@@ -1,0 +1,25 @@
+{
+  "slug": "mot-cle-principal",
+  "title": "Titre éditorial de l’article",
+  "seoTitle": "Titre SEO optionnel",
+  "metaDescription": "Description SEO dédiée, idéalement autour de 140 à 160 caractères.",
+  "cat": "Conseils d’utilisation",
+  "date": "2026-10-05",
+  "read": "6 min",
+  "excerpt": "Résumé visible sur la liste du blog. Il doit donner envie de lire sans dupliquer mécaniquement l’introduction.",
+  "related": ["GPBC"],
+  "body": [
+    {
+      "h": "Premier intertitre utile",
+      "p": ["Premier paragraphe.", "Deuxième paragraphe."]
+    },
+    {
+      "h": "Deuxième intertitre",
+      "p": "Contenu."
+    },
+    {
+      "h": "Questions fréquentes ou conclusion",
+      "p": "Contenu."
+    }
+  ]
+}
