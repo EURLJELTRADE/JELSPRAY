@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": true, 
   "devDependencies": {
     "@fontsource-variable/archivo": "^5.2.8",
     "@fontsource-variable/inter": "^5.2.8",
