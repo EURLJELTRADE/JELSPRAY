@@ -1,8 +1,6 @@
 {
   "private": true,
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.4",
-    "@babel/preset-react": "^7.27.1"
+    "esbuild": "^0.25.10"
   }
 }
