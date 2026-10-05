@@ -1,3 +1,4 @@
+// Netlify build: static SEO pages
 import fs from 'node:fs';import path from 'node:path';
 const html=fs.readFileSync('index.html','utf8');
 const m=html.match(/var BASE="https:\/\/jelspray\.fr", MAP=(\{.*?\}), LD=(\{.*?\}), LBL=/s);
