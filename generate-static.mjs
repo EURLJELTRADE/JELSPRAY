@@ -29,3 +29,29 @@ for(const route of routes){
  const dir='.'+route;fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'index.html'),out);
 }
 console.log('Generated '+routes.length+' static SEO pages');
+
+
+// Static blog pages + SEO metadata
+const blogDesc=(post)=>String(post.metaDescription||post.excerpt||'').replace(/\s+/g,' ').trim().slice(0,160);
+const setMeta=(source,post)=>{
+ const route='/blog/'+post.slug,url='https://jelspray.fr'+route,desc=blogDesc(post);
+ const title=(post.seoTitle||post.title)+' | JELSPRAY';
+ const ld={'@context':'https://schema.org','@type':'BlogPosting',headline:post.title,description:desc,datePublished:post.date,dateModified:post.updated||post.date,mainEntityOfPage:{'@type':'WebPage','@id':url},author:{'@type':'Organization',name:'JELSPRAY'},publisher:{'@type':'Organization',name:'JELSPRAY'}};
+ let out=source;
+ out=out.replace(/<title>.*?<\/title>/s,'<title>'+esc(title)+'</title>');
+ out=out.replace(/<meta name="description" content="[^"]*"[^>]*>/,'<meta name="description" content="'+esc(desc)+'" />');
+ out=out.replace(/<link rel="canonical" href="[^"]*"[^>]*>/,'<link rel="canonical" href="'+url+'" />');
+ out=out.replace(/<meta property="og:type" content="[^"]*"[^>]*>/,'<meta property="og:type" content="article" />');
+ out=out.replace(/<meta property="og:url" content="[^"]*"[^>]*>/,'<meta property="og:url" content="'+url+'" />');
+ out=out.replace(/<meta property="og:title" content="[^"]*"[^>]*>/,'<meta property="og:title" content="'+esc(post.title)+'" />');
+ out=out.replace(/<meta property="og:description" content="[^"]*"[^>]*>/,'<meta property="og:description" content="'+esc(desc)+'" />');
+ out=out.replace('</head>','<script type="application/ld+json" id="jl-ld-static">'+JSON.stringify(ld).replaceAll('<','\\u003c')+'</script>\n</head>');
+ return out;
+};
+for(const post of POSTS){
+ const route='/blog/'+post.slug;
+ const out=setMeta(html,post);
+ const dir='.'+route;
+ fs.mkdirSync(dir,{recursive:true});
+ fs.writeFileSync(path.join(dir,'index.html'),out);
+}
