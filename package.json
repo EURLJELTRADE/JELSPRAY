@@ -1,5 +1,9 @@
 {
   "private": true,
+  "scripts": {
+    "validate:blog": "node scripts/validate-blog.mjs",
+    "build": "npm run validate:blog && node generate-static.mjs && npx esbuild app.jsx --bundle --format=iife --platform=browser --target=es2018 --jsx=transform --outfile=app.js --minify"
+  },
   "devDependencies": {
     "esbuild": "^0.25.10"
   }
