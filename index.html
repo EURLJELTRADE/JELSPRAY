@@ -347,7 +347,11 @@ textarea.input{resize:vertical;min-height:96px;}
     set('og:url',url,1); set('twitter:title',m[0]); set('twitter:description',m[1]);
     var c=document.head.querySelector('link[rel="canonical"]'); if(c)c.setAttribute('href',url);
     var old=document.getElementById('jl-ld-route'); if(old)old.parentNode.removeChild(old);
-    var parts=[]; if(LD[path])parts.push(LD[path]);
+    var parts=[];
+    // Static product pages already contain Product JSON-LD generated at build time.
+    // Do not inject a second Product schema when that static schema is present.
+    var hasStaticProduct=document.getElementById('jl-ld-static');
+    if(LD[path]&&!hasStaticProduct)parts.push(LD[path]);
     var seg=path.split('/').filter(Boolean);
     if(seg.length){
       var items=[{"@type":"ListItem","position":1,"name":"Accueil","item":BASE+"/"}],pos=2,acc="";
