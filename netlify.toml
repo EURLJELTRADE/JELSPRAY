@@ -1,3 +1,4 @@
 [build]
+  # Build trigger: production React test
   command = "node generate-static.mjs && npx babel app.jsx --out-file app.js --presets @babel/preset-react --compact true"
   publish = "."
