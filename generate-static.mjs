@@ -1,6 +1,6 @@
 // Blog content build: compile /content/blog/*.json into a browser data file
 const blogDir='content/blog';
-const blogFiles=fs.existsSync(blogDir)?fs.readdirSync(blogDir).filter(f=>f.endsWith('.json')).sort():[];
+const blogFiles=fs.existsSync(blogDir)?fs.readdirSync(blogDir).filter(f=>f.endsWith('.json')&&!f.startsWith('_')).sort():[];
 const POSTS=blogFiles.map(f=>JSON.parse(fs.readFileSync(path.join(blogDir,f),'utf8'))).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
 fs.writeFileSync('blog-data.js','window.JELSPRAY_POSTS='+JSON.stringify(POSTS).replaceAll('<','\\u003c')+';\n');
 
