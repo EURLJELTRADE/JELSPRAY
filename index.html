@@ -820,7 +820,8 @@ const I = {
 
 /* ---------- product image (real photo over a styled placeholder fallback) ---------- */
 // Convention de nommage des fichiers : photos/<REF>-product.jpg  et  photos/<REF>-usage.jpg
-const photoSrc = (ref, kind) => ('/photos/' + ref + '-' + kind + '.jpg');
+const optimizedImage = (src) => ('/.netlify/images?url=' + src + '&q=82');
+const photoSrc = (ref, kind) => optimizedImage('/photos/' + ref + '-' + kind + '.jpg');
 // Références disposant réellement de photos (les autres gardent le visuel de remplacement).
 const REFS_WITH_PHOTOS = new Set(['GPAC','GPBC','GPBCM','GPCC','GPCCM','GPCCS','GPCS','GPEC','GPLG','GPLR','GPMP','GPRR','GPSBL','GPSC','GPSS','GPTPC','GPTS','GPWS','GP3243','GP3270','GP3272']);
 
@@ -1259,7 +1260,7 @@ function AtelierBand() {
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  const src = '/photos/atelier-expedition.jpg';
+  const src = optimizedImage('/photos/atelier-expedition.jpg');
   const imgStyle = {
     width: '100%', height: '100%', objectFit: 'cover', display: 'block',
     transition: 'clip-path 1.15s cubic-bezier(.16,.84,.3,1), transform 1.3s cubic-bezier(.16,.84,.3,1)',
@@ -1777,8 +1778,8 @@ function BlogCard({ post }) {
       onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; }}
       onMouseLeave={(e) => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
       <div style={{ aspectRatio: '16/10', overflow: 'hidden', background: 'repeating-linear-gradient(135deg,#EFEDE7 0 2px,transparent 2px 11px), linear-gradient(160deg,#FBFAF8,#ECEAE3)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-        {(() => { const cr = post.related.find((r) => REFS_WITH_PHOTOS.has(r)); const cv = post.cover || (cr ? photoSrc(cr, 'usage') : null); return cv
-          ? <img src={cv} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        {(() => { const cr = post.related.find((r) => REFS_WITH_PHOTOS.has(r)); const cv = post.cover ? optimizedImage(post.cover) : (cr ? photoSrc(cr, 'usage') : null); return cv
+          ? <img src={cv} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           : <span className="mono" style={{ fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>image de couverture</span>; })()}
         <span className="tag" style={{ position: 'absolute', top: 14, left: 14, background: 'var(--surface)' }}>{post.cat}</span>
       </div>
@@ -1820,7 +1821,7 @@ function BlogArticle({ params }) {
   if (!post) return <NotFound />;
   const related = post.related.map((r) => D.byRef[r]).filter(Boolean);
   const coverRef = post.related.find((r) => REFS_WITH_PHOTOS.has(r));
-  const coverSrc = post.cover || (coverRef ? photoSrc(coverRef, 'usage') : null);
+  const coverSrc = post.cover ? optimizedImage(post.cover) : (coverRef ? photoSrc(coverRef, 'usage') : null);
   return (
     <div className="fade-in">
       <div className="wrap" style={{ paddingTop: 36, maxWidth: 800 }}>
@@ -1832,7 +1833,7 @@ function BlogArticle({ params }) {
       <div className="wrap" style={{ maxWidth: 800, paddingTop: 26 }}>
         <div style={{ aspectRatio: '16/8', borderRadius: 'var(--radius-lg)', overflow: 'hidden', background: 'repeating-linear-gradient(135deg,#EFEDE7 0 2px,transparent 2px 11px), linear-gradient(160deg,#FBFAF8,#ECEAE3)', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {coverSrc
-            ? <img src={coverSrc} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ? <img src={coverSrc} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             : <span className="mono" style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>image de couverture</span>}
         </div>
       </div>
@@ -1871,7 +1872,7 @@ function BlogArticle({ params }) {
             )}
             {b.img && (
               <figure style={{ margin: '22px 0 0' }}>
-                <img src={b.img} alt={b.cap || post.title} style={{ width: '100%', borderRadius: 'var(--radius-lg)', border: '1px solid var(--line)', display: 'block' }} />
+                <img src={optimizedImage(b.img)} alt={b.cap || post.title} loading="lazy" style={{ width: '100%', borderRadius: 'var(--radius-lg)', border: '1px solid var(--line)', display: 'block' }} />
                 {b.cap && <figcaption className="mono" style={{ fontSize: 11.5, color: 'var(--ink-faint)', marginTop: 9, letterSpacing: '.03em' }}>{b.cap}</figcaption>}
               </figure>
             )}
