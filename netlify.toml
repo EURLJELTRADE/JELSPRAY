@@ -1,4 +1,3 @@
 [build]
-  # Build trigger: production React test
-  command = "node generate-static.mjs && npx babel app.jsx --out-file app.js --presets @babel/preset-react --compact true"
+  command = "node generate-static.mjs && npx esbuild app.jsx --bundle --format=iife --platform=browser --target=es2018 --jsx=transform --outfile=app.js --minify"
   publish = "."
