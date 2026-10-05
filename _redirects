@@ -14,8 +14,6 @@ http://www.jelspray.fr/*    https://jelspray.fr/:splat   301!
 # ---------------------------------------------------------------
 /fds/*        /404.html   404
 /*.pdf        /404.html   404
-/*.xml        /404.html   404
-/*.txt        /404.html   404
 
 # ---------------------------------------------------------------
 # 3. Fallback SPA (routage pushState)
