@@ -1114,6 +1114,27 @@ function BlogArticle({ params }) {
             {(Array.isArray(b.p) ? b.p : b.p ? [b.p] : []).map((para, j) => (
               <p key={j} style={{ fontSize: 16.5, lineHeight: 1.75, color: 'var(--ink-soft)', marginTop: j ? 14 : 0 }}>{para}</p>
             ))}
+            {b.bullets && (
+              <ul style={{ margin: '17px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {b.bullets.map((it, j) => (
+                  <li key={j} style={{ position: 'relative', paddingLeft: 20, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-soft)' }}>
+                    <span style={{ position: 'absolute', left: 0, top: 11, width: 7, height: 7, borderRadius: '50%', background: 'var(--red)' }} />
+                    {typeof it === 'string' ? it : <React.Fragment><strong style={{ color: 'var(--ink)' }}>{it.lead}</strong> — {it.text}</React.Fragment>}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {(Array.isArray(b.after) ? b.after : b.after ? [b.after] : []).map((para, j) => (
+              <p key={'a' + j} style={{ fontSize: 16.5, lineHeight: 1.75, color: 'var(--ink-soft)', marginTop: 16 }}>{para}</p>
+            ))}
+            {b.table && (
+              <div style={{ overflowX:'auto', marginTop:18 }}>
+                <table style={{ width:'100%', borderCollapse:'collapse', fontSize:14 }}>
+                  <thead><tr>{b.table.head.map((h,j)=><th key={j} style={{textAlign:'left',padding:'10px 12px',borderBottom:'1px solid var(--line)',color:'var(--ink)'}}>{h}</th>)}</tr></thead>
+                  <tbody>{b.table.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j} style={{padding:'10px 12px',borderBottom:'1px solid var(--line)',color:'var(--ink-soft)'}}>{cell}</td>)}</tr>)}</tbody>
+                </table>
+              </div>
+            )}
             {(b.usage || b.temp) && (
               <div style={{ marginTop: 16, borderLeft: '2px solid ' + (b.accent || 'var(--line)'), paddingLeft: 16, display: 'flex', flexDirection: 'column', gap: 7 }}>
                 {b.usage && <div style={{ fontSize: 15, lineHeight: 1.55, color: 'var(--ink-soft)' }}><strong style={{ color: 'var(--ink)' }}>Utilisations typiques :</strong> {b.usage}</div>}
