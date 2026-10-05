@@ -55,3 +55,16 @@ for(const post of POSTS){
  fs.mkdirSync(dir,{recursive:true});
  fs.writeFileSync(path.join(dir,'index.html'),out);
 }
+
+
+// Synchronize article entries in sitemap from structured blog content.
+let sitemap=fs.readFileSync('sitemap.xml','utf8');
+for(const post of POSTS){
+ const loc='https://jelspray.fr/blog/'+post.slug;
+ if(!sitemap.includes('<loc>'+loc+'</loc>')){
+  const entry='  <url>\n    <loc>'+loc+'</loc>\n    <lastmod>'+(post.updated||post.date)+'</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n';
+  sitemap=sitemap.replace('</urlset>',entry+'</urlset>');
+ }
+}
+fs.writeFileSync('sitemap.xml',sitemap);
+console.log('Generated '+POSTS.length+' structured blog pages');
