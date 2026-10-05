@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const dir='content/blog';
-const files=fs.readdirSync(dir).filter(f=>f.endsWith('.json'));
+const files=fs.readdirSync(dir).filter(f=>f.endsWith('.json')&&!f.startsWith('_'));
 const seen=new Set();
 let errors=0;
 
