@@ -1,5 +1,6 @@
 /* ===================== JELSPRAY — UI shared layer ===================== */
-const { useState, useEffect, useRef, useCallback, createContext, useContext } = React;
+import React, { useState, useEffect, useRef, useCallback, createContext, useContext } from 'react';
+import { createRoot } from 'react-dom/client';
 const D = window.JELSPRAY;
 
 /* ---------- helpers ---------- */
@@ -1586,4 +1587,4 @@ function Router() {
 }
 
 const rootEl = document.getElementById('root');
-ReactDOM.createRoot(rootEl).render(<Router />);
+createRoot(rootEl).render(<Router />);
