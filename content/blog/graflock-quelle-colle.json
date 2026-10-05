@@ -1,0 +1,100 @@
+{
+  "slug": "graflock-quelle-colle",
+  "title": "GRAFLOCK : quel frein-filet pour quel assemblage ?",
+  "cat": "Comparatifs",
+  "date": "2026-05-14",
+  "read": "6 min",
+  "excerpt": "Bleu, vert, rouge : la gamme GRAFLOCK d’adhésifs anaérobies pour filetages — équivalent LOCTITE — expliquée simplement, avec le bon produit selon la résistance mécanique et la température d’utilisation.",
+  "related": [
+    "GP3243",
+    "GP3270",
+    "GP3272"
+  ],
+  "body": [
+    {
+      "h": "Le principe de l’adhésif anaérobie pour filetages",
+      "p": [
+        "Un adhésif anaérobie polymérise en l’absence d’air, c’est-à-dire qu’il durcit uniquement lorsqu’il est confiné entre les filets d’un assemblage vissé. Une fois polymérisé, il remplit les jeux microscopiques entre les surfaces métalliques, bloque le desserrage provoqué par les vibrations et assure l’étanchéité de la liaison.",
+        "La gamme GRAFLOCK est l’équivalent direct des références LOCTITE les plus utilisées en mécanique industrielle et automobile (243 / 270 / 272). Elle offre les mêmes performances techniques, à un tarif plus accessible."
+      ]
+    },
+    {
+      "accent": "#2A6FDB",
+      "h": "Bleu — GRAFLOCK 3243",
+      "note": "équivalent LOCTITE 243",
+      "sub": "Résistance moyenne — Démontable à l’outil",
+      "p": [
+        "Le GRAFLOCK 3243 est le frein-filet polyvalent de la gamme, adapté à la grande majorité des applications courantes. Il convient aux assemblages filetés de Ø 6 à 20 mm que l’on peut être amené à démonter ultérieurement, sans effort excessif ni chauffage préalable."
+      ],
+      "usage": "visserie courante, fixation de capteurs, supports, équipements industriels légers.",
+      "temp": "-20°C à +150°C"
+    },
+    {
+      "accent": "#1F8A4C",
+      "h": "Vert — GRAFLOCK 3270",
+      "note": "équivalent LOCTITE 270",
+      "sub": "Haute résistance — Démontable à chaud",
+      "p": [
+        "Le GRAFLOCK 3270 est conçu pour les assemblages soumis à de fortes contraintes mécaniques. Sa résistance élevée garantit la tenue des liaisons critiques même sous vibrations intenses ou efforts importants. Le démontage reste possible après chauffage localisé à 250°C pendant 5 minutes.",
+        "Convient aux filetages jusqu’à Ø 25 mm."
+      ],
+      "usage": "boîtes de vitesses, bouchons moteur, corps de soupapes, assemblages haute charge.",
+      "temp": "-20°C à +150°C (démontable à 250°C)"
+    },
+    {
+      "accent": "#CC0000",
+      "h": "Rouge — GRAFLOCK 3272",
+      "note": "équivalent LOCTITE 272",
+      "sub": "Haute température — Fixation maximale",
+      "p": [
+        "Le GRAFLOCK 3272 est la référence de la gamme pour les environnements thermiquement exigeants. Il maintient ses propriétés mécaniques jusqu’à +250°C en service continu, ce qui le rend indispensable sur les composants proches de sources de chaleur. Les assemblages traités avec ce produit ne sont pas prévus pour être rouverts sans chauffage."
+      ],
+      "usage": "composants moteur exposés à la chaleur, liaisons permanentes en environnement haute température.",
+      "temp": "-20°C à +250°C"
+    },
+    {
+      "h": "Tableau comparatif",
+      "table": {
+        "head": [
+          "Produit",
+          "Couleur",
+          "Résistance",
+          "Démontage",
+          "Ø max.",
+          "Temp. max."
+        ],
+        "dots": [
+          "#2A6FDB",
+          "#1F8A4C",
+          "#CC0000"
+        ],
+        "rows": [
+          [
+            "GRAFLOCK 3243",
+            "Bleu",
+            "Moyenne",
+            "À l’outil",
+            "20 mm",
+            "+150°C"
+          ],
+          [
+            "GRAFLOCK 3270",
+            "Vert",
+            "Haute",
+            "À chaud (250°C)",
+            "25 mm",
+            "+150°C"
+          ],
+          [
+            "GRAFLOCK 3272",
+            "Rouge",
+            "Maximale",
+            "À chaud",
+            "—",
+            "+250°C"
+          ]
+        ]
+      }
+    }
+  ]
+}
